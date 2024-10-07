@@ -20,4 +20,10 @@ public class Pokemon
         this.Life -= PType.AttackEffectivity(attack, this.PType);
     }
     
+    public void ReceiveHeal(Heal heal)
+    {
+        float healingAmount = (this.Life * 15) / 100;
+        this.Life += healingAmount;
+    }
+    
 }

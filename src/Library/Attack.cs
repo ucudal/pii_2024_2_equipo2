@@ -2,10 +2,10 @@
 
 public class Attack
 {
-    public Type AType { get; }
+    public FamilyType AType { get; }
     public float Damage;
 
-    public Attack(Type aType, float damage)
+    public Attack(FamilyType aType, float damage)
     {
         this.AType = aType;
         this.Damage = damage;

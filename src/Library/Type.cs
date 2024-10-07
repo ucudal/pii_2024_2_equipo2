@@ -2,7 +2,7 @@ namespace Library;
 
 public class Type
 {
-    private string Name { get; set; }
+    public string Name { get; set; }
 
     public Type(string name)
     {

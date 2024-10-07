@@ -2,16 +2,16 @@
 
 public class Pokemon
 {
-    private float Life { get; set; }
-    private Type PType { get; set; }
-    private List<Attack> Attacks { get; set; }
-    private int Speed { get; set; }
+    public float Life { get; set; }
+    public Type PType { get; set; }
+    public List<Attack> Attacks { get; set; }
+    public int Speed { get; set; }
 
-    public Pokemon(float life, Type pType, List<attack> attacks, int speed)
+    public Pokemon(float life, Type pType, List<Attack> attacks, int speed)
     {
         this.Life = life;
         this.PType = pType;
-        this.Attack = attacks;
+        this.Attacks = attacks;
         this.Speed = speed;
     }
 

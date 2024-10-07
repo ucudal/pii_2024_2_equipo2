@@ -2,7 +2,7 @@ namespace Library;
 
 public class Type
 {
-    private string Name { get; set; }
+    public string Name { get; set; }
 
     public Type(string name)
     {
@@ -11,42 +11,42 @@ public class Type
 
     public float AttackEffectivity(Attack attack, Type type)
     {
-        if (attack.AType == Water)
+        if (attack.AType.Name == "Water")
         {
-            if (type == Fire)
+            if (type.Name == "Fire")
             {
-                attack.damage = attack.damage * 2;
+                attack.Damage = attack.Damage * 2;
             }
-            if (type == Grass)
+            if (type.Name == "Grass")
             {
-                attack.damage = attack.damage / 2;
+                attack.Damage = attack.Damage / 2;
             }
         }
         
-        if (attack.AType == Fire)
+        if (attack.AType.Name == "Fire")
         {
-            if (type == Grass)
+            if (type.Name == "Grass")
             {
-                attack.damage = attack.damage * 2;
+                attack.Damage = attack.Damage * 2;
             }
-            if (type == Water)
+            if (type.Name == "Water")
             {
-                attack.damage = attack.damage / 2;
+                attack.Damage = attack.Damage / 2;
             }
         }
         
-        if (attack.AType == Grass)
+        if (attack.AType.Name == "Grass")
         {
-            if (type == Water)
+            if (type.Name == "Water")
             {
-                attack.damage = attack.damage * 2;
+                attack.Damage = attack.Damage * 2;
             }
-            if (type == Fire)
+            if (type.Name == "Fire")
             {
-                attack.damage = attack.damage / 2;
+                attack.Damage = attack.Damage / 2;
             }
         }
 
-        return attack.damage;
+        return attack.Damage;
     }
 }

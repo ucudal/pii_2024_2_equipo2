@@ -29,5 +29,4 @@ public class Pokemon
         float healingAmount = (this.Life * 15) / 100;
         this.Life += healingAmount;
     }
-    
 }

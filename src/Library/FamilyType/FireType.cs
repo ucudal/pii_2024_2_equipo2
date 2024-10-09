@@ -6,15 +6,15 @@ public class FireType: IType
 {
     public string Name { get; set; }
 
-    public float CalculateEffectivity(IType oponentType)
+    public float CalculateEffectivity(IType attackType)
     {
-        if (oponentType is GrassType)
-        {
-            return 2.0f;
-        }
-        else if (oponentType is WaterType)
+        if (attackType is GrassType)
         {
             return 0.5f;
+        }
+        else if (attackType is WaterType)
+        {
+            return 2.0f;
         }
         else
         {

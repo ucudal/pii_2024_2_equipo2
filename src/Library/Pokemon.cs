@@ -19,9 +19,8 @@ public class Pokemon
 
     public void ReceiveAttack(Attack attack, IType oponentType)
     {
-        float efectividad = oponentType.CalculateEffectivity(oponentType);
-        
-        this.Life -= efectividad;
+        float efectividad = oponentType.CalculateEffectivity(attack.AType);
+        this.Life -= attack.Damage * efectividad;
     }
     
     public void ReceiveHeal(Heal heal)

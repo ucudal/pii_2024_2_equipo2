@@ -1,9 +1,12 @@
-﻿using Library;
 using Library.FamilyType;
 using Library.Interfaces;
-public class Program
+
+namespace Library;
+using Library;
+
+public class Game
 {
-    public static void Main()
+    public void Main()
     {
         GrassType Grass = new GrassType();
         FireType Fire = new FireType();
@@ -27,26 +30,27 @@ public class Program
         Pokemon Bulbasaur = new Pokemon(200, Grass, new List<Attack> { VineWhip, Tackle, SolarBeam, LeechSeed }, 30);
         Pokemon Squirtle = new Pokemon(200, Water, new List<Attack> { WaterGun, Tackle, Bubble, AquaJet }, 25);
         Pokemon Charmander = new Pokemon(200, Fire, new List<Attack> { Ember, Scratch, Flamethrower, FireFang }, 30);
+        
+    }
 
-        //Charmander.ReceiveAttack(Bulbasaur.Attacks[2]);
-        //Console.WriteLine("Bulbasaur ataca a Charmander con SolarBeam (100 de daño) pero es poco efectivo por lo que hace 50 de daño, vida de Charmander: " + Charmander.Life);
-        
-        //Bulbasaur.ReceiveAttack(Charmander.Attacks[2]);
-        //Console.WriteLine("Charmander ataca a Bulbasaur con Flamethrower (90 de daño) y es muy efectivo por lo que hace 180 de daño, vida de Bulbasaur: " + Bulbasaur.Life);
-        
-        Player Player1 = new Player("player1");
-        Player Player2 = new Player("player2");
-        
-        Player1.AddPokemon(Bulbasaur);
-        Player1.AddPokemon(Squirtle);
-        
-        Player2.AddPokemon(Charmander);
-        Player2.AddPokemon(Squirtle);
-        
-        Player1.Pokemons[1].ReceiveAttack(Player2.Pokemons[0].Attacks[2], Player2.Pokemons[0].PType);
-        Console.WriteLine(Player1.Pokemons[1].Life);
-        Console.WriteLine(Player2.Pokemons[1].Life);
+    public bool AllPokemonDead(Player player)
+    {
+        int AliveCount = player.Pokemons.Count();
+        foreach (var pokemon in player.Pokemons)
+        {
+            if (pokemon.Life <= 0)
+            {
+                AliveCount -= 1;
+            }
+        }
 
+        if (AliveCount > 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }
-

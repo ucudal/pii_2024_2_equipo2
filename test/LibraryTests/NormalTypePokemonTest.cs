@@ -9,7 +9,6 @@ public class NormalTypePokemonTest
     private Pokemon normalPokemon;
     private NormalType normalType;
     private Attack normalTypeAttack;
-   
     
     // Pokemones que van a atacar
     private Pokemon waterPokemon;

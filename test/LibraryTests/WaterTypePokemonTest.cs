@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-using Library;
+﻿using Library;
 using Library.FamilyType;
 
 namespace LibraryTests;

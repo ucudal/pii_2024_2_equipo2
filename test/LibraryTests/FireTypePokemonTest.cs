@@ -27,7 +27,6 @@ public class FireTypePokemonTest
     private Heal curation;
 
     [SetUp]
-    
     public void setup()
     {
         firePokemon = new Pokemon(200, fireType, new List<Attack> { fireTypeAttack }, 30);
@@ -57,4 +56,6 @@ public class FireTypePokemonTest
         Assert.That(fireTypeAttack.AType.CalculateEffectivity(grassType), Is.EqualTo(0.5));
         Assert.That(fireTypeAttack.AType.CalculateEffectivity(fireType), Is.EqualTo(1));
     }
+    
+    
 }

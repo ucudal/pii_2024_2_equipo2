@@ -10,5 +10,12 @@ public class Player
         this.Name = name;
         this.Pokemons = new List<Pokemon>();
     }
-    
+
+    public void AddPokemon(Pokemon pokemon)
+    {
+        if (this.Pokemons.Count() < 6)
+        {
+            this.Pokemons.Add(pokemon);
+        }
+    }
 }

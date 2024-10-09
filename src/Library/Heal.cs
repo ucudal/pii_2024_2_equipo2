@@ -2,7 +2,8 @@
 
 public class Heal
 {
-    public float HealingAmount;
+    public string Name { get; set; }
+    public float HealingAmount { get; set; }
 
     public Heal(float healingAmount)
     {

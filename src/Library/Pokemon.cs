@@ -25,7 +25,6 @@ public class Pokemon
     
     public void ReceiveHeal(Heal heal)
     {
-        float healingAmount = (this.Life * 15) / 100;
-        this.Life += healingAmount;
+        this.Life += heal.HealingAmount;
     }
 }

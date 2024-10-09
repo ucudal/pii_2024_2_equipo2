@@ -1,4 +1,4 @@
-namespace Library
+/*namespace Library
 {
     public class FamilyType
     {
@@ -50,4 +50,4 @@ namespace Library
             return attack.Damage;
         }
     }
-}
+} */

@@ -1,13 +1,15 @@
-﻿namespace Library;
+﻿using Library.Interfaces;
+
+namespace Library;
 
 public class Pokemon
 {
     public float Life { get; set; }
-    public FamilyType PType { get; set; }
+    public IType PType { get; set; }
     public List<Attack> Attacks { get; set; }
     public int Speed { get; set; }
 
-    public Pokemon(float life, FamilyType pType, List<Attack> attacks, int speed)
+    public Pokemon(float life, IType pType, List<Attack> attacks, int speed)
     {
         this.Life = life;
         this.PType = pType;
@@ -15,9 +17,11 @@ public class Pokemon
         this.Speed = speed;
     }
 
-    public void ReceiveAttack(Attack attack)
+    public void ReceiveAttack(Attack attack, IType oponentType)
     {
-        this.Life -= PType.AttackEffectivity(attack, this.PType);
+        float efectividad = oponentType.CalculateEffectivity(oponentType);
+        
+        this.Life -= efectividad;
     }
     
     public void ReceiveHeal(Heal heal)

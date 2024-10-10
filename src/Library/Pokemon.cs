@@ -28,4 +28,9 @@ public class Pokemon
         float healingAmount = (this.Life * 15) / 100;
         this.Life += healingAmount;
     }
+    public void IncreaseSpeed(int speedAmount)
+    {
+        int increaseAmount = (this.Speed * speedAmount) / 100;
+        this.Speed += increaseAmount;
+    }
 }

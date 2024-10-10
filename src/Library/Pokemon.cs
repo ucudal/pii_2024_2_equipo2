@@ -25,7 +25,7 @@ public class Pokemon
         this.Life -= attack.Damage * efectividad;
     }
     
-    public void ReceiveHeal(Heal heal)
+    public void ReceiveHealing(Heal heal)
     {
         this.Life += heal.HealingAmount;
     }

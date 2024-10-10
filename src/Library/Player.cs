@@ -4,11 +4,9 @@ public class Player
 {
     public string Name;
     public List<Pokemon> Pokemons { get; set; }
-
     public List<Pokemon> PokemonInGame { get; set; }
-
     public bool Turn { get; set; }
-
+    
     public Player(string name)
     {
         this.Name = name;

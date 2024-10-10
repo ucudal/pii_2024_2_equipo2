@@ -22,11 +22,11 @@ public class Program
 
         Attack VineWhip = new Attack("VineWhip", 45, Grass);
         Attack SolarBeam = new Attack("SolarBeam", 100, Grass);
-        Attack LeechSeed = new Attack("LeachSeed", 0, Grass);
+        Attack LeechSeed = new Attack("LeachSeed", 10, Grass);
 
-        Pokemon Bulbasaur = new Pokemon(200, Grass, new List<Attack> { VineWhip, Tackle, SolarBeam, LeechSeed }, 30);
-        Pokemon Squirtle = new Pokemon(200, Water, new List<Attack> { WaterGun, Tackle, Bubble, AquaJet }, 25);
-        Pokemon Charmander = new Pokemon(200, Fire, new List<Attack> { Ember, Scratch, Flamethrower, FireFang }, 30);
+        Pokemon Bulbasaur = new Pokemon("Bulbasaur",200, Grass, new List<Attack> { VineWhip, Tackle, SolarBeam, LeechSeed }, 30);
+        Pokemon Squirtle = new Pokemon("Squirtle",200, Water, new List<Attack> { WaterGun, Tackle, Bubble, AquaJet }, 25);
+        Pokemon Charmander = new Pokemon("Charmander",200, Fire, new List<Attack> { Ember, Scratch, Flamethrower, FireFang }, 30);
 
         //Charmander.ReceiveAttack(Bulbasaur.Attacks[2]);
         //Console.WriteLine("Bulbasaur ataca a Charmander con SolarBeam (100 de daño) pero es poco efectivo por lo que hace 50 de daño, vida de Charmander: " + Charmander.Life);
@@ -42,11 +42,93 @@ public class Program
         
         Player2.AddPokemon(Charmander);
         Player2.AddPokemon(Squirtle);
-        
-        Player1.Pokemons[1].ReceiveAttack(Player2.Pokemons[0].Attacks[2], Player1.Pokemons[1].PType);
-        Console.WriteLine(Player1.Pokemons[1].Life);
-        Console.WriteLine(Player2.Pokemons[1].Life);
+        Player1.SelectPokemon(Bulbasaur);
+        Player2.SelectPokemon(Charmander);
 
+        WhoStarts(Player1, Player2);
+        
+        UseTurn(Player1, Player2);
+        Console.WriteLine("Player 1, Bulbasaur vida: " + Player1.PokemonInGame[0].Life);
+        Console.WriteLine("Player 2, Charmander vida: " + Player2.PokemonInGame[0].Life);
+        Console.WriteLine("");
+        Console.WriteLine("");
+        Console.WriteLine("");
+
+        UseTurn(Player1, Player2);
+        Console.WriteLine("Player 1, Bulbasaur vida: " + Player1.PokemonInGame[0].Life);
+        Console.WriteLine("Player 2, Charmander vida: " + Player2.PokemonInGame[0].Life);
+        Console.WriteLine("");
+        Console.WriteLine("");
+        Console.WriteLine("");
+        
+        UseTurn(Player1, Player2);
+        Console.WriteLine("Player 1, Bulbasaur vida: " + Player1.PokemonInGame[0].Life);
+        Console.WriteLine("Player 2, Charmander vida: " + Player2.PokemonInGame[0].Life);
+        Console.WriteLine("");
+        Console.WriteLine("");
+        Console.WriteLine("");
+        
+        UseTurn(Player1, Player2);
+        Console.WriteLine("Player 1, Bulbasaur vida: " + Player1.PokemonInGame[0].Life);
+        Console.WriteLine("Player 2, Charmander vida: " + Player2.PokemonInGame[0].Life);
+        Console.WriteLine("");
+        Console.WriteLine("");
+        Console.WriteLine("");
+        
+        UseTurn(Player1, Player2);
+        Console.WriteLine("Player 1, Bulbasaur vida: " + Player1.PokemonInGame[0].Life);
+        Console.WriteLine("Player 2, Charmander vida: " + Player2.PokemonInGame[0].Life);
+        Console.WriteLine("");
+        Console.WriteLine("");
+        Console.WriteLine("");
+    }
+
+    private static void WhoStarts(Player player1, Player player2)
+    {
+        double speed1 = player1.PokemonInGame[0].Speed;
+        double speed2 = player2.PokemonInGame[0].Speed;
+
+        if (speed1 > speed2)
+        {
+            player1.Turn = true;
+        }
+        else
+        {
+            player2.Turn = true;
+        }
+    }
+
+    private static void UseTurn(Player player1, Player player2)
+    {
+        Random rnd = new Random();
+        int num = rnd.Next(4);
+        
+        if (player1.Turn)
+        {
+            Console.WriteLine("El jugador 1 con el pokemon: " + player1.PokemonInGame[0].Name + " ataca con " + player1.PokemonInGame[0].Attacks[num].Name + ", que hace " + player1.PokemonInGame[0].Attacks[num].Damage + " de daño");
+            player2.PokemonInGame[0].ReceiveAttack(player1.PokemonInGame[0].Attacks[num]);
+            ChangeTurn(player1, player2);
+        }
+        else
+        {
+            Console.WriteLine("El jugador 2 con el pokemon: " + player2.PokemonInGame[0].Name + " ataca con " + player2.PokemonInGame[0].Attacks[num].Name + ", que hace " + player2.PokemonInGame[0].Attacks[num].Damage + " de daño");
+            player1.PokemonInGame[0].ReceiveAttack(player2.PokemonInGame[0].Attacks[num]);
+            ChangeTurn(player1, player2);
+        }
+    }
+
+    private static void ChangeTurn(Player player1, Player player2)
+    {
+        if (player1.Turn == true)
+        {
+            player1.Turn = false;
+            player2.Turn = true;
+        }
+        else
+        {
+            player1.Turn = true;
+            player2.Turn = false; 
+        }
     }
 }
 

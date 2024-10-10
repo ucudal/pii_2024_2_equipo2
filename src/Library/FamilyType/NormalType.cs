@@ -3,10 +3,8 @@
 namespace Library.FamilyType;
 
 public class NormalType: IType
-{
-    public string Name { get; set; }
-
-    public float CalculateEffectivity(IType oponentType)
+{ 
+    public float CalculateEffectivity(IType attackType)
     {
         return 1.0f;
     }

@@ -4,8 +4,6 @@ namespace Library.FamilyType;
 
 public class WaterType: IType
 {
-    public string Name { get; set; }
-
     public float CalculateEffectivity(IType attackType)
     {
         if (attackType is FireType)

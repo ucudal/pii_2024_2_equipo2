@@ -46,7 +46,6 @@ public class Program
         Player1.Pokemons[1].ReceiveAttack(Player2.Pokemons[0].Attacks[2], Player1.Pokemons[1].PType);
         Console.WriteLine(Player1.Pokemons[1].Life);
         Console.WriteLine(Player2.Pokemons[1].Life);
-
     }
 }
 

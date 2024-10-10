@@ -29,19 +29,19 @@ public class WaterTypePokemonTest
     [SetUp]
     public void setup()
     {
-        waterPokemon = new Pokemon(200, waterType, new List<Attack> { waterTypeAttack }, 25);
+        waterPokemon = new Pokemon("Squirtle", 200, waterType, new List<Attack> { waterTypeAttack }, 25);
         waterType = new WaterType();
         waterTypeAttack = new Attack("Martillo de Cangrejo", 20, waterType);
         
-        firePokemon = new Pokemon(200, fireType, new List<Attack> { fireTypeAttack }, 30);
+        firePokemon = new Pokemon("Charizard", 200, fireType, new List<Attack> { fireTypeAttack }, 30);
         fireType = new FireType();
         fireTypeAttack = new Attack("Ascuas", 20, fireType);
         
-        grassPokemon = new Pokemon(200, grassType, new List<Attack> { grassTypeAttack }, 30);
+        grassPokemon = new Pokemon("Bulbasaur", 200, grassType, new List<Attack> { grassTypeAttack }, 30);
         grassType = new GrassType();
         grassTypeAttack = new Attack("Hoja Afilada", 15, grassType);
         
-        normalPokemon = new Pokemon(200, normalType, new List<Attack> { normalTypeAttack }, 5);
+        normalPokemon = new Pokemon("Eevee", 200, normalType, new List<Attack> { normalTypeAttack }, 5);
         normalType = new NormalType();
         normalTypeAttack = new Attack("Ataque Rápido", 5, normalType);
         
@@ -62,16 +62,16 @@ public class WaterTypePokemonTest
     {
         Assert.That(waterPokemon.Life, Is.EqualTo(200));
         
-        waterPokemon.ReceiveAttack(waterTypeAttack, waterType);
+        waterPokemon.ReceiveAttack(waterTypeAttack);
         Assert.That(waterPokemon.Life, Is.EqualTo(180));
         
-        waterPokemon.ReceiveAttack(fireTypeAttack, fireType);
+        waterPokemon.ReceiveAttack(fireTypeAttack);
         Assert.That(waterPokemon.Life, Is.EqualTo(160));
         
-        waterPokemon.ReceiveAttack(grassTypeAttack, grassType);
+        waterPokemon.ReceiveAttack(grassTypeAttack);
         Assert.That(waterPokemon.Life, Is.EqualTo(145));
         
-        waterPokemon.ReceiveAttack(normalTypeAttack, normalType);
+        waterPokemon.ReceiveAttack(normalTypeAttack);
         Assert.That(waterPokemon.Life, Is.EqualTo(140));
     }
 }

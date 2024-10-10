@@ -29,21 +29,21 @@ public class FireTypePokemonTest
     [SetUp]
     public void setup()
     {
-        firePokemon = new Pokemon(200, fireType, new List<Attack> { fireTypeAttack }, 30);
+        firePokemon = new Pokemon("Charizard", 200, fireType, new List<Attack> { fireTypeAttack }, 30);
         fireType = new FireType();
         fireTypeAttack = new Attack("Ascuas", 20, fireType);
         
-        waterPokemon = new Pokemon(200, waterType, new List<Attack> { waterTypeAttack }, 25);
+        normalPokemon = new Pokemon("Eevee", 200, normalType, new List<Attack> { normalTypeAttack }, 5);
+        normalType = new NormalType();
+        normalTypeAttack = new Attack("Ataque Rápido", 5, normalType);
+        
+        waterPokemon = new Pokemon("Squirtle", 200, waterType, new List<Attack> { waterTypeAttack }, 25);
         waterType = new WaterType();
         waterTypeAttack = new Attack("Martillo de Cangrejo", 20, waterType);
         
-        grassPokemon = new Pokemon(200, grassType, new List<Attack> { grassTypeAttack }, 30);
+        grassPokemon = new Pokemon("Bulbasaur", 200, grassType, new List<Attack> { grassTypeAttack }, 30);
         grassType = new GrassType();
         grassTypeAttack = new Attack("Hoja Afilada", 15, grassType);
-        
-        normalPokemon = new Pokemon(200, normalType, new List<Attack> { normalTypeAttack }, 5);
-        normalType = new NormalType();
-        normalTypeAttack = new Attack("Ataque Rápido", 5, normalType);
         
         curation = new Heal(20);
     }

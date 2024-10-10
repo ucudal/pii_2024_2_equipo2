@@ -54,7 +54,7 @@ namespace LibraryTests
         {
             Assert.That(grassTypeAttack.AType.CalculateEffectivity(grassType), Is.EqualTo(1));
             Assert.That(grassTypeAttack.AType.CalculateEffectivity(waterType), Is.EqualTo(0.5));
-            Assert.That(grassTypeAttack.AType.CalculateEffectivity(fireType), Is.EqualTo(2));
+            Assert.That(grassTypeAttack.AType.CalculateEffectivity(fireType), Is.EqualTo(2.0));
             Assert.That(grassTypeAttack.AType.CalculateEffectivity(normalType), Is.EqualTo(1));
         }
 

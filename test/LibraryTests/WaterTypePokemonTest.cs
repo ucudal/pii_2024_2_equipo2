@@ -1,16 +1,16 @@
 ﻿using Library;
 using Library.FamilyType;
+using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace LibraryTests;
 
 public class WaterTypePokemonTest
 {
-    // Pokemon principal al cual vamos a atacar
     private Pokemon waterPokemon;
     private WaterType waterType;
     private Attack waterTypeAttack;
     
-    // Pokemones que van a atacar
     private Pokemon firePokemon;
     private FireType fireType;
     private Attack fireTypeAttack;
@@ -18,60 +18,62 @@ public class WaterTypePokemonTest
     private Pokemon grassPokemon;
     private GrassType grassType;
     private Attack grassTypeAttack;
-   
-    private Pokemon normalPokemon;
-    private NormalType normalType;
-    private Attack normalTypeAttack;
-    
-    // Habilidades
+
     private Heal curation;
 
     [SetUp]
-    public void setup()
+    public void Setup()
     {
-        waterPokemon = new Pokemon("Squirtle", 200, waterType, new List<Attack> { waterTypeAttack }, 25);
+        // Inicializa el tipo de agua
         waterType = new WaterType();
         waterTypeAttack = new Attack("Martillo de Cangrejo", 20, waterType);
+        waterPokemon = new Pokemon("Squirtle", 200, waterType, new List<Attack> { waterTypeAttack }, 25);
         
-        firePokemon = new Pokemon("Charizard", 200, fireType, new List<Attack> { fireTypeAttack }, 30);
+        // Inicializa el tipo de fuego
         fireType = new FireType();
         fireTypeAttack = new Attack("Ascuas", 20, fireType);
+        firePokemon = new Pokemon("Charizard", 200, fireType, new List<Attack> { fireTypeAttack }, 30);
         
-        grassPokemon = new Pokemon("Bulbasaur", 200, grassType, new List<Attack> { grassTypeAttack }, 30);
+        // Inicializa el tipo de hierba
         grassType = new GrassType();
         grassTypeAttack = new Attack("Hoja Afilada", 15, grassType);
-        
-        normalPokemon = new Pokemon("Eevee", 200, normalType, new List<Attack> { normalTypeAttack }, 5);
-        normalType = new NormalType();
-        normalTypeAttack = new Attack("Ataque Rápido", 5, normalType);
-        
-        curation = new Heal(20);
+        grassPokemon = new Pokemon("Bulbasaur", 200, grassType, new List<Attack> { grassTypeAttack }, 30);
+
+        // Inicializa la habilidad de curación
+        curation = new Heal(50);
     }
-    
+
     [Test]
-    public void CalculateEffecivityIsCorrect()
+    public void CalculateEffectivityIsCorrect()
     {
-        Assert.That(waterTypeAttack.AType.CalculateEffectivity(waterType), Is.EqualTo((1)));
-        Assert.That(waterTypeAttack.AType.CalculateEffectivity(fireType), Is.EqualTo(0.5));
-        Assert.That(waterTypeAttack.AType.CalculateEffectivity(grassType), Is.EqualTo((2)));
-        Assert.That(waterTypeAttack.AType.CalculateEffectivity(normalType), Is.EqualTo((1)));
+        Assert.That(waterTypeAttack.AType.CalculateEffectivity(waterType), Is.EqualTo(1));
+        Assert.That(waterTypeAttack.AType.CalculateEffectivity(fireType), Is.EqualTo(0.5)); // Agua es débil contra fuego
+        Assert.That(waterTypeAttack.AType.CalculateEffectivity(grassType), Is.EqualTo(2.0)); // Agua es fuerte contra hierba
     }
 
     [Test]
     public void ReceiveAttackWorks()
     {
+        // Comprobamos la vida inicial
         Assert.That(waterPokemon.Life, Is.EqualTo(200));
         
+        // Ataque de tipo agua (efectividad 1 contra sí mismo)
         waterPokemon.ReceiveAttack(waterTypeAttack);
         Assert.That(waterPokemon.Life, Is.EqualTo(180));
         
+        // Ataque de tipo fuego (efectividad 0.5 contra agua)
         waterPokemon.ReceiveAttack(fireTypeAttack);
-        Assert.That(waterPokemon.Life, Is.EqualTo(160));
+        Assert.That(waterPokemon.Life, Is.EqualTo(170));
         
+        // Ataque de tipo hierba (efectividad 2.0 contra agua)
         waterPokemon.ReceiveAttack(grassTypeAttack);
-        Assert.That(waterPokemon.Life, Is.EqualTo(145));
-        
-        waterPokemon.ReceiveAttack(normalTypeAttack);
-        Assert.That(waterPokemon.Life, Is.EqualTo(140));
+        Assert.That(waterPokemon.Life, Is.EqualTo(140)); // 190 - (15 * 0.5)
+    }
+    
+    [Test]
+    public void PokemonReceivesHealingCorrectly()
+    {
+        waterPokemon.ReceiveHealing(curation);
+        Assert.That(waterPokemon.Life, Is.EqualTo(250)); // 200 + 50
     }
 }

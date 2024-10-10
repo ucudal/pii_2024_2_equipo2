@@ -74,4 +74,22 @@ public class NormalTypePokemonTest
         normalPokemon.ReceiveAttack(grassTypeAttack);
         Assert.That(normalPokemon.Life, Is.EqualTo(140));
     }
+    
+    [Test]
+    public void IncreaseSpeedWorksCorrectly()
+    {
+        normalPokemon.IncreaseSpeed(20);
+        Assert.That(normalPokemon.Speed, Is.EqualTo(6));
+        
+        normalPokemon.IncreaseSpeed(50);
+        Assert.That(normalPokemon.Speed, Is.EqualTo(9));
+    }
+
+    [Test]
+    public void PokemonReceivesHealingCorrectly()
+    {
+        Heal healAbility = new Heal("Poción", 50, normalType);
+        normalPokemon.ReceiveHealing(healAbility);
+        Assert.That(normalPokemon.Life, Is.EqualTo(250));
+    }
 }

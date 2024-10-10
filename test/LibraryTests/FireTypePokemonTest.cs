@@ -57,5 +57,24 @@ public class FireTypePokemonTest
         Assert.That(fireTypeAttack.AType.CalculateEffectivity(fireType), Is.EqualTo(1));
     }
     
+    [Test]
+    public void IncreaseSpeedWorksCorrectly()
+    {
+        firePokemon.IncreaseSpeed(20);
+        Assert.That(firePokemon.Speed, Is.EqualTo(36));
+
+        firePokemon.IncreaseSpeed(50);
+        Assert.That(firePokemon.Speed, Is.EqualTo(54));
+    }
+
+    [Test]
+    public void PokemonReceivesHealingCorrectly()
+    {
+        Heal healAbility = new Heal("Poción", 50, fireType);
+        firePokemon.ReceiveHealing(healAbility);
+        Assert.That(firePokemon.Life, Is.EqualTo(250));
+    }
+
+    
     
 }

@@ -5,7 +5,7 @@ public class Program
 {
     public static void Main()
     {
-        GrassType Grass = new GrassType();
+      /*  GrassType Grass = new GrassType();
         FireType Fire = new FireType();
         NormalType Normal = new NormalType();
         WaterType Water = new WaterType();
@@ -191,5 +191,6 @@ public class Program
         {
             return true;
         }
+        */
     }
 }

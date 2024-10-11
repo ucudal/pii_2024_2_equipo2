@@ -54,7 +54,7 @@ public class Game
         Player Player2 = new Player("player2");
     }
 
-    public static void WhoStarts(Player player1, Player player2)
+    public void WhoStarts(Player player1, Player player2)
     {
         double speed1 = player1.PokemonInGame[0].Speed;
         double speed2 = player2.PokemonInGame[0].Speed;
@@ -69,7 +69,7 @@ public class Game
         }
     }
 
-    public static void ChangeTurn(Player player1, Player player2)
+    public void ChangeTurn(Player player1, Player player2)
     {
         if (player1.Turn == true)
         {
@@ -83,7 +83,7 @@ public class Game
         }
     }
 
-    public static void UseTurn(Player player1, Player player2)
+    public void UseTurn(Player player1, Player player2)
     {
         Random rnd = new Random();
         int num = rnd.Next(3);
@@ -111,7 +111,7 @@ public class Game
         
     }
 
-    public static void PokemonInGameDeath(Player player)
+    public void PokemonInGameDeath(Player player)
     {
         if (player.PokemonInGame[0].Life <= 0)
         {
@@ -125,7 +125,7 @@ public class Game
         }
     }
 
-    public static bool AllPokemonDead(Player player)
+    public bool AllPokemonDead(Player player)
     {
         int AliveCount = player.Pokemons.Count();
         foreach (var pokemon in player.Pokemons)

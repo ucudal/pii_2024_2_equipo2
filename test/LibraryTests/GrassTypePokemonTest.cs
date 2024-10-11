@@ -1,6 +1,5 @@
 ﻿using Library;
 using Library.FamilyType;
-using NUnit.Framework;
 
 namespace LibraryTests
 {

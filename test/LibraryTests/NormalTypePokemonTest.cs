@@ -30,19 +30,19 @@ public class NormalTypePokemonTest
     public void setup()
     {
         normalPokemon = new Pokemon("Eevee", 200, normalType, new List<Attack> { normalTypeAttack }, 5);
-        normalType = new NormalType();
+        normalType =  NormalType.GetInstance();
         normalTypeAttack = new Attack("Ataque Rápido", 5, normalType);
         
         waterPokemon = new Pokemon("Squirtle", 200, waterType, new List<Attack> { waterTypeAttack }, 25);
-        waterType = new WaterType();
+        waterType = WaterType.GetInstance();
         waterTypeAttack = new Attack("Martillo de Cangrejo", 20, waterType);
         
         firePokemon = new Pokemon("Charizard", 200, fireType, new List<Attack> { fireTypeAttack }, 30);
-        fireType = new FireType();
+        fireType =  FireType.GetInstance();
         fireTypeAttack = new Attack("Ascuas", 20, fireType);
         
         grassPokemon = new Pokemon("Bulbasaur", 200, grassType, new List<Attack> { grassTypeAttack }, 30);
-        grassType = new GrassType();
+        grassType =  GrassType.GetInstance();
         grassTypeAttack = new Attack("Hoja Afilada", 15, grassType);
         
         curation = new Heal(20);

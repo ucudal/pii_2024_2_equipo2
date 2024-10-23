@@ -29,19 +29,19 @@ namespace LibraryTests
         [SetUp]
         public void Setup()
         {
-            grassType = new GrassType();
+            grassType =  GrassType.GetInstance();
             grassTypeAttack = new Attack("Hoja Afilada", 15, grassType);
             grassPokemon = new Pokemon("Bulbasaur", 200, grassType, new List<Attack> { grassTypeAttack }, 30);
 
-            waterType = new WaterType();
+            waterType =  WaterType.GetInstance();
             waterTypeAttack = new Attack("Martillo de Cangrejo", 20, waterType);
             waterPokemon = new Pokemon("Squirtle", 200, waterType, new List<Attack> { waterTypeAttack }, 25);
 
-            fireType = new FireType();
+            fireType =  FireType.GetInstance();
             fireTypeAttack = new Attack("Ascuas", 20, fireType);
             firePokemon = new Pokemon("Charizard", 200, fireType, new List<Attack> { fireTypeAttack }, 30);
 
-            normalType = new NormalType();
+            normalType =  NormalType.GetInstance();
             normalTypeAttack = new Attack("Ataque Rápido", 5, normalType);
             normalPokemon = new Pokemon("Eevee", 200, normalType, new List<Attack> { normalTypeAttack }, 5);
 
@@ -56,8 +56,8 @@ namespace LibraryTests
             var effectivity = new Effectivity();
             
             Assert.That(effectivity.CalculateEffectivity(grassTypeAttack.AType, grassType), Is.EqualTo(1.0f));
-            Assert.That(effectivity.CalculateEffectivity(grassTypeAttack.AType, waterType), Is.EqualTo(0.5f));
-            Assert.That(effectivity.CalculateEffectivity(grassTypeAttack.AType, fireType), Is.EqualTo(2.0f));
+            Assert.That(effectivity.CalculateEffectivity(grassTypeAttack.AType, waterType), Is.EqualTo(2.0f));
+            Assert.That(effectivity.CalculateEffectivity(grassTypeAttack.AType, fireType), Is.EqualTo(0.5f));
             Assert.That(effectivity.CalculateEffectivity(grassTypeAttack.AType, normalType), Is.EqualTo(1.0f));
         }
 
@@ -70,13 +70,13 @@ namespace LibraryTests
             Assert.That(grassPokemon.Life, Is.EqualTo(185));
 
             grassPokemon.ReceiveAttack(waterTypeAttack);
-            Assert.That(grassPokemon.Life, Is.EqualTo(165));
+            Assert.That(grassPokemon.Life, Is.EqualTo(175));
 
             grassPokemon.ReceiveAttack(fireTypeAttack);
-            Assert.That(grassPokemon.Life, Is.EqualTo(145));
+            Assert.That(grassPokemon.Life, Is.EqualTo(135));
 
             grassPokemon.ReceiveAttack(normalTypeAttack);
-            Assert.That(grassPokemon.Life, Is.EqualTo(140));
+            Assert.That(grassPokemon.Life, Is.EqualTo(130));
         }
 
         [Test]

@@ -23,17 +23,17 @@ public class WaterTypePokemonTest
     public void Setup()
     {
         // Inicializa el tipo de agua
-        waterType = new WaterType();
+        waterType =  WaterType.GetInstance();
         waterTypeAttack = new Attack("Martillo de Cangrejo", 20, waterType);
         waterPokemon = new Pokemon("Squirtle", 200, waterType, new List<Attack> { waterTypeAttack }, 25);
         
         // Inicializa el tipo de fuego
-        fireType = new FireType();
+        fireType =  FireType.GetInstance();
         fireTypeAttack = new Attack("Ascuas", 20, fireType);
         firePokemon = new Pokemon("Charizard", 200, fireType, new List<Attack> { fireTypeAttack }, 30);
         
         // Inicializa el tipo de hierba
-        grassType = new GrassType();
+        grassType =  GrassType.GetInstance();
         grassTypeAttack = new Attack("Hoja Afilada", 15, grassType);
         grassPokemon = new Pokemon("Bulbasaur", 200, grassType, new List<Attack> { grassTypeAttack }, 30);
 
@@ -77,11 +77,11 @@ public class WaterTypePokemonTest
         
         // Ataque de tipo fuego (efectividad 0.5 contra agua)
         waterPokemon.ReceiveAttack(fireTypeAttack);
-        Assert.That(waterPokemon.Life, Is.EqualTo(160));
+        Assert.That(waterPokemon.Life, Is.EqualTo(170));
         
         // Ataque de tipo hierba (efectividad 2.0 contra agua)
         waterPokemon.ReceiveAttack(grassTypeAttack);
-        Assert.That(waterPokemon.Life, Is.EqualTo(145)); // 
+        Assert.That(waterPokemon.Life, Is.EqualTo(140)); // 
     }
     
     [Test]

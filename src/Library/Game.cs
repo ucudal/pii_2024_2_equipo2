@@ -6,11 +6,11 @@ public class Game
 {
     public void Main()
     {
-        GrassType Grass = new GrassType();
-        FireType Fire = new FireType();
-        NormalType Normal = new NormalType();
-        WaterType Water = new WaterType();
-
+        GrassType Grass =  GrassType.GetInstance();
+        FireType Fire =  FireType.GetInstance();
+        NormalType Normal =  NormalType.GetInstance();
+        WaterType Water = WaterType.GetInstance();
+            
         Attack Ember = new Attack("Ember", 50, Fire);
         Attack Scratch = new Attack("Scratch", 30, Normal);
         Attack Flamethrower = new Attack("Flamethrower", 90, Fire);
@@ -108,7 +108,6 @@ public class Game
                 ChangeTurn(player1, player2);
             }
         }
-        
     }
 
     public void PokemonInGameDeath(Player player)

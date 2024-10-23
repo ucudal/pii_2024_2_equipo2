@@ -35,7 +35,7 @@ namespace Library.Tests
         {
             game = new Game();
             
-            waterType = new WaterType();
+            waterType =  WaterType.GetInstance();
             waterTypeAttack1 = new Attack("Martillo de Cangrejo", 20, waterType);
             waterTypeAttack2 = new Attack("Chorro de Agua", 15, waterType);
             waterTypeAttack3 = new Attack("Burbuja Explosiva", 25, waterType);
@@ -46,7 +46,7 @@ namespace Library.Tests
             waterPokemon1 = new Pokemon("Squirtle", 200, waterType, new List<Attack> { waterTypeAttack1, waterTypeAttack2, waterTypeAttack3 }, 25);
             waterPokemon2 = new Pokemon("Wailord", 200, waterType, new List<Attack> { waterTypeAttack4, waterTypeAttack5, waterTypeAttack6 }, 30);
             
-            fireType = new FireType();
+            fireType =  FireType.GetInstance();
             fireTypeAttack1 = new Attack("Ascuas", 20, fireType);
             fireTypeAttack2 = new Attack("Llama Fulgurante", 25, fireType);
             fireTypeAttack3 = new Attack("Fogonazo", 30, fireType);

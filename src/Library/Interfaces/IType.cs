@@ -2,6 +2,5 @@
 {
     public interface IType
     {
-        float CalculateEffectivity(IType oponentType);
     }
 }

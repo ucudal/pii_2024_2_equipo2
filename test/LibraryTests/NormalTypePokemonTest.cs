@@ -51,10 +51,12 @@ public class NormalTypePokemonTest
     [Test]
     public void CalculateEffecivityIsCorrect()
     {
-        Assert.That(normalTypeAttack.AType.CalculateEffectivity(normalType), Is.EqualTo((1)));
-        Assert.That(normalTypeAttack.AType.CalculateEffectivity(waterType), Is.EqualTo(1));
-        Assert.That(normalTypeAttack.AType.CalculateEffectivity(fireType), Is.EqualTo((1)));
-        Assert.That(normalTypeAttack.AType.CalculateEffectivity(grassType), Is.EqualTo((1)));
+        var effectivity = new Effectivity();
+            
+        Assert.That(effectivity.CalculateEffectivity(normalTypeAttack.AType, normalType), Is.EqualTo(1.0f));
+        Assert.That(effectivity.CalculateEffectivity(normalTypeAttack.AType, waterType), Is.EqualTo(1.0f));
+        Assert.That(effectivity.CalculateEffectivity(normalTypeAttack.AType, fireType), Is.EqualTo(1.0f));
+        Assert.That(effectivity.CalculateEffectivity(normalTypeAttack.AType, grassType), Is.EqualTo(1.0f));
     }
 
     [Test]

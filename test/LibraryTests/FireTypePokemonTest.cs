@@ -49,12 +49,16 @@ public class FireTypePokemonTest
     }
 
     [Test]
-    public void CalculateEffecivityIsCorrect()
+    public void CalculateEffectivityIsCorrect()
     {
-        Assert.That(fireTypeAttack.AType.CalculateEffectivity(fireType), Is.EqualTo(1));
-        Assert.That(fireTypeAttack.AType.CalculateEffectivity(waterType), Is.EqualTo(2));
-        Assert.That(fireTypeAttack.AType.CalculateEffectivity(grassType), Is.EqualTo(0.5));
-        Assert.That(fireTypeAttack.AType.CalculateEffectivity(fireType), Is.EqualTo(1));
+        // Crear una instancia de Effectivity para usar en las pruebas
+        var effectivity = new Effectivity();
+
+        // Probar la efectividad de los ataques usando la clase Effectivity
+        Assert.That(effectivity.CalculateEffectivity(fireTypeAttack.AType, fireType), Is.EqualTo(1.0f));
+        Assert.That(effectivity.CalculateEffectivity(fireTypeAttack.AType, waterType), Is.EqualTo(2.0f));
+        Assert.That(effectivity.CalculateEffectivity(fireTypeAttack.AType, grassType), Is.EqualTo(0.5f));
+        Assert.That(effectivity.CalculateEffectivity(fireTypeAttack.AType, fireType), Is.EqualTo(1.0f));
     }
     
     [Test]
